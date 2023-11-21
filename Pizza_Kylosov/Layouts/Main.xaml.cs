@@ -75,7 +75,7 @@ namespace Pizza_Kylosov.Layouts
             button.Tag = i;
             return button;
         }
-
+        
         Label AddIng(int i)
         {
             if (dishs[i].ingredients.Count != 0) 
@@ -151,7 +151,6 @@ namespace Pizza_Kylosov.Layouts
                     button3.Background = (Brush)bc.ConvertFrom("#228e5d");
                     button3.Foreground = Brushes.White;
 
-
                     dishs[int.Parse(button1.Tag.ToString())].activeSize = 0;
                     count.Text = dishs[int.Parse(button1.Tag.ToString())].sizes[0].countOrder.ToString();
                     order.IsChecked = dishs[int.Parse(button1.Tag.ToString())].sizes[0].orders;
@@ -208,6 +207,8 @@ namespace Pizza_Kylosov.Layouts
 
                             int id = int.Parse(minus.Tag.ToString());
                             dishs[id].sizes[dishs[id].activeSize].countOrder = int.Parse(count.Text);
+                            if (dishs[id].sizes[dishs[id].activeSize].countOrder != 0) 
+                                price.Content = "Цена: " + dishs[int.Parse(button1.Tag.ToString())].sizes[0].price / dishs[id].sizes[dishs[id].activeSize].countOrder + " р.";
                         }
                     }
                 };
@@ -248,6 +249,8 @@ namespace Pizza_Kylosov.Layouts
                 {
                     int id = int.Parse(order.Tag.ToString());
                     dishs[id].sizes[dishs[id].activeSize].orders = (bool)order.IsChecked;
+                    int x = int.Parse((OrderCount.Content.ToString().Remove(0, 10)).Replace(")", ""));
+                    OrderCount.Content = $"Заказать ({ ((bool)order.IsChecked ? $"{++x}" : $"{--x}")})";
                 };
 
                 global.Children.Add(logo);
