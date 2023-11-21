@@ -67,6 +67,7 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Class\Dish.cs" />
     <Compile Include="Layouts\Main.xaml.cs">
       <DependentUpon>Main.xaml</DependentUpon>
     </Compile>
