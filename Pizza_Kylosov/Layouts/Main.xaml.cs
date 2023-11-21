@@ -315,6 +315,112 @@ namespace Pizza_Kylosov.Layouts
 
             dishs.Add(newDish);
 
+            // Pizza 2
+            newDish = new Dish();
+            newDish.img = "img-3";
+            newDish.name = "Пепперони";
+            newDish.description = "Пицца с пикантной пепперони, моцареллой и томатным соусом.";
+
+            newIngredient = new Dish.Ingredient();
+            newIngredient.name = "пепперони";
+            newDish.ingredients.Add(newIngredient);
+
+            newIngredient = new Dish.Ingredient();
+            newIngredient.name = "сыр «Моцарелла»";
+            newDish.ingredients.Add(newIngredient);
+
+            newSize = new Dish.Sizes();
+            newSize.size = 23;
+            newSize.price = 400;
+            newSize.wes = 550;
+            newDish.sizes.Add(newSize);
+
+            newSize = new Dish.Sizes();
+            newSize.size = 30;
+            newSize.price = 800;
+            newSize.wes = 600;
+            newDish.sizes.Add(newSize);
+
+            newSize = new Dish.Sizes();
+            newSize.size = 40;
+            newSize.price = 1200;
+            newSize.wes = 750;
+            newDish.sizes.Add(newSize);
+
+            dishs.Add(newDish);
+
+            // Pizza 3
+            newDish = new Dish();
+            newDish.img = "img-4";
+            newDish.name = "Гавайская";
+            newDish.description = "Пицца с ветчиной и ананасами.";
+
+            newIngredient = new Dish.Ingredient();
+            newIngredient.name = "ветчина";
+            newDish.ingredients.Add(newIngredient);
+
+            newIngredient = new Dish.Ingredient();
+            newIngredient.name = "ананасы";
+            newDish.ingredients.Add(newIngredient);
+
+            newSize = new Dish.Sizes();
+            newSize.size = 23;
+            newSize.price = 450;
+            newSize.wes = 600;
+            newDish.sizes.Add(newSize);
+
+            newSize = new Dish.Sizes();
+            newSize.size = 30;
+            newSize.price = 900;
+            newSize.wes = 650;
+            newDish.sizes.Add(newSize);
+
+            newSize = new Dish.Sizes();
+            newSize.size = 40;
+            newSize.price = 1350;
+            newSize.wes = 800;
+            newDish.sizes.Add(newSize);
+
+            dishs.Add(newDish);
+
+            // Pizza 4
+            newDish = new Dish();
+            newDish.img = "img-5";
+            newDish.name = "Вегетарианская";
+            newDish.description = "Пицца с миксом овощей.";
+
+            newIngredient = new Dish.Ingredient();
+            newIngredient.name = "болгарский перец";
+            newDish.ingredients.Add(newIngredient);
+
+            newIngredient = new Dish.Ingredient();
+            newIngredient.name = "томаты";
+            newDish.ingredients.Add(newIngredient);
+
+            newIngredient = new Dish.Ingredient();
+            newIngredient.name = "шампиньоны";
+            newDish.ingredients.Add(newIngredient);
+
+            newSize = new Dish.Sizes();
+            newSize.size = 23;
+            newSize.price = 400;
+            newSize.wes = 550;
+            newDish.sizes.Add(newSize);
+
+            newSize = new Dish.Sizes();
+            newSize.size = 30;
+            newSize.price = 800;
+            newSize.wes = 600;
+            newDish.sizes.Add(newSize);
+
+            newSize = new Dish.Sizes();
+            newSize.size = 40;
+            newSize.price = 1200;
+            newSize.wes = 750;
+            newDish.sizes.Add(newSize);
+
+            dishs.Add(newDish);
+
             CreatePizza();
         }
     }
