@@ -12,6 +12,7 @@ namespace Pizza_Kylosov.Class
         public string name;
         public List<Sizes> sizes = new List<Sizes>();
         public string img;
+        public List<Ingredient> ingredients = new List<Ingredient>();
         public string description;
 
         public int activeSize = 0;

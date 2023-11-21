@@ -21,7 +21,7 @@
                 <Image x:Name="iconApp" Source="Pizza_Kylosov;component/image/icon.png" HorizontalAlignment="left" Height="30" Margin="10,10,0,0" VerticalAlignment="Top" Width="30"/>
                 <Label Content="Meню" HorizontalAlignment="Left" Margin="40,10,0,0" VerticalAlignment="Top" Height="30" Foreground="White" FontWeight="Bold" FontSize="16"/>
                 
-                <Button x:Name="OrderCount" Click="OrderClick" Content="Заказать (0)" Margin="0,10,10,0" VerticalAlignment="Top" HorizontalAlignment="Right" Width="100" Height="25"/>
+                <Button x:Name="OrderCount" Content="Заказать (0)" Margin="0,10,10,0" VerticalAlignment="Top" HorizontalAlignment="Right" Width="100" Height="25"/>
                 <Button Content="Mикс X" Margin="0,10,114.6,0" VerticalAlignment="Top" HorizontalAlignment="Right" Width="100" Height="25"/>
             </Grid>
             

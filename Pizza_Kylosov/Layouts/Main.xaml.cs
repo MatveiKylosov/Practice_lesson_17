@@ -13,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.IO;
 using static Pizza_Kylosov.Class.Dish;
 
 namespace Pizza_Kylosov.Layouts
@@ -22,12 +23,14 @@ namespace Pizza_Kylosov.Layouts
     /// </summary>
     public partial class Main : Page
     {
+        public MainWindow mainWindow;
+        public List<Dish> dishs = new List<Dish>();
         Grid CreateGrid(int i)
         {
             var bc = new BrushConverter();
             Grid global = new Grid();
             global.Height = 100;
-            global.Background = (Brush)bc.ConvertFrom("#FFECECEC");
+            global.Background = (Brush)bc.ConvertFrom("#222222");
             if (i > 0) global.Margin = new Thickness(0, 10, 0, 0);
             return global;
         }
@@ -56,7 +59,7 @@ namespace Pizza_Kylosov.Layouts
             name.VerticalAlignment = va;
             name.Margin = new Thickness(margin[0], margin[1], margin[2], margin[3]);
             name.FontWeight = fw;
-            
+            name.Foreground = Brushes.White;
             return name;
         }
 
@@ -133,19 +136,19 @@ namespace Pizza_Kylosov.Layouts
                 wes = CreateLabel("Вес: " + dishs[i].sizes[0].wes + " гр.", HorizontalAlignment.Left, VerticalAlignment.Bottom, new[] { 236.0, 0, 0, 10 }, FontWeights.Normal);
 
                 button1 = CreateButton(dishs[i].sizes[0].size + " см.", HorizontalAlignment.Right, VerticalAlignment.Top, new[] { 0.0, 10, 110, 0 }, 45, i);
-                button1.Background = Brushes.White;
-                button1.Foreground = (Brush)bc.ConvertFrom("#FFDD3333");
+                button1.Background = (Brush)bc.ConvertFrom("#00ba78");
+                button1.Foreground = Brushes.White;
                 button1.Click += delegate
                 {
                     price.Content = "Цена: " + dishs[int.Parse(button1.Tag.ToString())].sizes[0].price + " р.";
                     wes.Content = "Вес: " + dishs[int.Parse(button1.Tag.ToString())].sizes[0].wes + " гр.";
-                    button1.Background = Brushes.White;
-                    button1.Foreground = (Brush)bc.ConvertFrom("#FFDD3333");
+                    button1.Background = (Brush)bc.ConvertFrom("#00ba78");
+                    button1.Foreground = Brushes.White;
 
 
-                    button2.Background = (Brush)bc.ConvertFrom("#FFDD3333");
+                    button2.Background = (Brush)bc.ConvertFrom("#228e5d");
                     button2.Foreground = Brushes.White;
-                    button3.Background = (Brush)bc.ConvertFrom("#FFDD3333");
+                    button3.Background = (Brush)bc.ConvertFrom("#228e5d");
                     button3.Foreground = Brushes.White;
 
 
@@ -159,13 +162,13 @@ namespace Pizza_Kylosov.Layouts
                 {
                     price.Content = "Цена: " + dishs[int.Parse(button2.Tag.ToString())].sizes[1].price + " р."; //Обновляем цену
                     wes.Content = "Вес: " + dishs[int.Parse(button2.Tag.ToString())].sizes[1].wes + " гр.";
-                    button2.Background = Brushes.White;
-                    button2.Foreground = (Brush)bc.ConvertFrom("#FFDD3333");
+                    button2.Background = (Brush)bc.ConvertFrom("#00ba78");
+                    button2.Foreground = Brushes.White;
 
 
-                    button1.Background = (Brush)bc.ConvertFrom("#FFDD3333");
+                    button1.Background = (Brush)bc.ConvertFrom("#228e5d");
                     button1.Foreground = Brushes.White;
-                    button3.Background = (Brush)bc.ConvertFrom("#FFDD3333");
+                    button3.Background = (Brush)bc.ConvertFrom("#228e5d");
                     button3.Foreground = Brushes.White;
 
 
@@ -179,13 +182,13 @@ namespace Pizza_Kylosov.Layouts
                 {
                     price.Content = "Цена: " + dishs[int.Parse(button3.Tag.ToString())].sizes[2].price + " р."; //Обновляем цену
                     wes.Content = "Вес: " + dishs[int.Parse(button3.Tag.ToString())].sizes[2].wes + " гр.";
-                    button3.Background = Brushes.White;
-                    button3.Foreground = (Brush)bc.ConvertFrom("#FFDD3333");
+                    button3.Background = (Brush)bc.ConvertFrom("#00ba78");
+                    button3.Foreground = (Brush)bc.ConvertFrom("#228e5d");
 
 
-                    button1.Background = (Brush)bc.ConvertFrom("#FFDD3333");
+                    button1.Background = (Brush)bc.ConvertFrom("#228e5d");
                     button1.Foreground = Brushes.White;
-                    button2.Background = (Brush)bc.ConvertFrom("#FFDD3333");
+                    button2.Background = (Brush)bc.ConvertFrom("#228e5d");
                     button2.Foreground = Brushes.White;
 
 
@@ -233,12 +236,12 @@ namespace Pizza_Kylosov.Layouts
                 count.Width = 65;
                 count.Height = 19;
                 count.Tag = i; 
-                global.Children.Add(count);
 
                 order.Content = "Выбрать";
                 order.HorizontalAlignment = HorizontalAlignment.Right;
                 order.VerticalAlignment = VerticalAlignment.Bottom;
                 order.Margin = new Thickness(0, 0, 128, 13);
+                order.Foreground = Brushes.White;
                 order.Tag = i;
                 order.Click += delegate
                 {
@@ -264,9 +267,55 @@ namespace Pizza_Kylosov.Layouts
             }
         }
 
-        public Main()
+        public Main(MainWindow _mainWindow)
         {
             InitializeComponent();
+            mainWindow = _mainWindow;
+            //Пицца 1
+            Dish newDish = new Dish();
+            newDish.img = "img-1";
+            newDish.name = "Сливочная";
+            newDish.description = "Пицца - итальянское национальное блюдо в виде круглой открытой дрожжевой лепёшки";
+
+
+            Dish.Ingredient newIngredient = new Dish.Ingredient();
+            newIngredient.name = "соус «Кунжутный»";
+            newDish.ingredients.Add(newIngredient);
+
+            newIngredient = new Dish.Ingredient(); ;
+            newIngredient.name = "сыр «Моцарелла»";
+            newDish.ingredients.Add(newIngredient);
+
+            newIngredient = new Dish.Ingredient(); ;
+            newIngredient.name = "сыр «Моцарелла мягкий»";
+            newDish.ingredients.Add(newIngredient);
+
+            newIngredient = new Dish.Ingredient(); ;
+            newIngredient.name = "помидоры";
+            newDish.ingredients.Add(newIngredient);
+
+
+            Dish.Sizes newSize = new Dish.Sizes();
+            newSize.size = 23;
+            newSize.price = 380;
+            newSize.wes = 530;
+            newDish.sizes.Add(newSize);
+
+            newSize = new Dish.Sizes();
+            newSize.size = 30;
+            newSize.price = 760;
+            newSize.wes = 560;
+            newDish.sizes.Add(newSize);
+
+            newSize = new Dish.Sizes();
+            newSize.size = 40;
+            newSize.price = 1210;
+            newSize.wes = 730;
+            newDish.sizes.Add(newSize);
+
+            dishs.Add(newDish);
+
+            CreatePizza();
         }
     }
 }
