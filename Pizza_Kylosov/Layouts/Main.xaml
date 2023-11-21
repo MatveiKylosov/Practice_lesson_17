@@ -11,6 +11,7 @@
         <Grid Background="White">
             <Grid Margin="0,0,0.4,0" Background="#222222" Height="50" VerticalAlignment="Top">
                 <Grid.Resources>
+                    
                     <Style TargetType="{x:Type Button}">
                         <Setter Property="Background" Value="#228e5d"/>
                         <Setter Property="Foreground" Value="White"/>
