@@ -223,6 +223,7 @@ namespace Pizza_Kylosov.Layouts
 
                             int id = int.Parse(plus.Tag.ToString());
                             dishs[id].sizes[dishs[id].activeSize].countOrder = int.Parse(count.Text);
+                            price.Content = "Цена: " + dishs[int.Parse(button1.Tag.ToString())].sizes[0].price * dishs[id].sizes[dishs[id].activeSize].countOrder + " р.";
                         }
                     }
                 };
